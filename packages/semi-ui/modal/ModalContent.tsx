@@ -157,7 +157,7 @@ export default class ModalContent extends BaseComponent<ModalContentReactProps, 
             const className = cls(`${cssClasses.DIALOG}-mask`, {
                 // [`${cssClasses.DIALOG}-mask-hidden`]: !props.visible,
             });
-            return <div key="mask" {...this.props.maskExtraProps} className={cls(className, maskClassName)} style={props.maskStyle}/>;
+            return <div key="mask" {...this.props.maskExtraProps} className={cls(className, maskClassName)} style={props.maskStyle} />;
         }
         return null;
     };
@@ -169,7 +169,7 @@ export default class ModalContent extends BaseComponent<ModalContentReactProps, 
         } = this.props;
         let closer;
         if (closable) {
-            const iconType = closeIcon || <IconClose x-semi-prop="closeIcon"/>;
+            const iconType = closeIcon || <IconClose x-semi-prop="closeIcon" />;
             closer = (
                 <Button
                     aria-label="close"
@@ -286,13 +286,15 @@ export default class ModalContent extends BaseComponent<ModalContentReactProps, 
                     onAnimationEnd={props.onAnimationEnd}
                     className={cls([`${cssClasses.DIALOG}-content`,
                         props.contentClassName,
-                        { [`${cssClasses.DIALOG}-content-fullScreen`]: props.isFullScreen }])}>
+                        { [`${cssClasses.DIALOG}-content-fullScreen`]: props.isFullScreen }])}
+                    style={props?.contentStyle || {}}
+                >
                     {header}
                     {body}
                     {footer}
                 </div>
             </div>
-        ); 
+        );
         // return props.visible ? dialogElement : null;
         return dialogElement;
     };

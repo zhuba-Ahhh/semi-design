@@ -32,6 +32,8 @@ export interface ModalReactProps extends ModalProps {
     closeIcon?: ReactNode;
     title?: ReactNode;
     content?: ReactNode;
+    contentStyle?: CSSProperties;
+    contentClassName?: string;
     footer?: ReactNode;
     header?: ReactNode;
     onCancel?: (e: React.MouseEvent) => void | Promise<any>;
@@ -111,7 +113,7 @@ class Modal extends BaseComponent<ModalReactProps, ModalState> {
     foundation: ModalFoundation;
 
     private readonly modalRef: LegacyRef<ModalContent>;
-    private bodyOverflow: string|null = null;
+    private bodyOverflow: string | null = null;
     private scrollBarWidth: number;
     private originBodyWidth: string;
     private _haveRendered: boolean;
@@ -338,6 +340,8 @@ class Modal extends BaseComponent<ModalReactProps, ModalState> {
             zIndex,
             getPopupContainer,
             visible,
+            contentClassName,
+            contentStyle,
             ...restProps
         } = this.props;
         let style = styleFromProps;
@@ -390,7 +394,8 @@ class Modal extends BaseComponent<ModalReactProps, ModalState> {
                                         contentExtraProps={animationEventsNeedBind}
                                         maskExtraProps={maskAnimationEventsNeedBind}
                                         isFullScreen={this.state.isFullScreen}
-                                        contentClassName={animationClassName}
+                                        contentClassName={contentClassName}
+                                        contentStyle={contentStyle}
                                         maskClassName={maskAnimationClassName}
                                         className={classList}
                                         getPopupContainer={getPopupContainer}

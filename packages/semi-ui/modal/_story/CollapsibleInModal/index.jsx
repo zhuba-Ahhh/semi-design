@@ -88,6 +88,8 @@ class Demo extends React.Component {
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
+                    contentClassName={"contentClass"}
+                    contentStyle={{ background: "#fff" }}
                 >
                     <Button onClick={this.toggle}>Toggle</Button>
                     <Button onClick={() => this.changeContent()}>Change Content</Button>
